@@ -4,10 +4,11 @@ const firstnameInput = document.querySelector(".firstname");
 const lastnameInput = document.querySelector(".lastname");
 const phoneInput = document.querySelector(".phonenumber");
 const isProInput = document.querySelector(".pro-member");
+const memberList = document.querySelector(".member-list");
 
 const submitButton = document.querySelector(".submit-button");
 
-allMembers = [];
+const allMembers = [];
 
 class Member {
 	constructor(firstname, lastname, phonenumber) {
@@ -41,10 +42,28 @@ submitButton.addEventListener("click", (event)=> {
 	} else {
 		allMembers.push(Member.createMember());
 	}
+	UI.renderList()
 	console.log(allMembers);
 });
 
 
+// RENDER LIST
+
+class UI {
+	static renderList() {
+		memberList.textContent = "";
+		allMembers.forEach((member)=> {
+			const memberLi = document.createElement("li");
+			memberList.appendChild(memberLi);
+			memberLi.textContent = member.firstname + member.lastname;	
+				
+			if(member.isProMember) {
+				memberLi.classList.add("pro-bold");
+			}
+		});
+
+	}
+}
 
 
-
+allMembers

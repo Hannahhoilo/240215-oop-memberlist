@@ -17,3 +17,8 @@ body {
 input {
 	margin-bottom: 1rem;
 }
+
+.pro-bold {
+	font-weight: 700;
+	color: gold;
+}
